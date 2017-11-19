@@ -23,7 +23,7 @@ import java.util.UUID;
 
 public class ledControl extends ActionBarActivity {
 
-    Button btnOn, btnOff, btnDis;
+    Button btnOn, btnOff, btnDis, btnTemp;
     SeekBar brightness;
     TextView lumn;
     String address = null;
@@ -49,8 +49,9 @@ public class ledControl extends ActionBarActivity {
         btnOn = (Button)findViewById(R.id.button2);
         btnOff = (Button)findViewById(R.id.button3);
         btnDis = (Button)findViewById(R.id.button4);
+        btnTemp = (Button)findViewById(R.id.button5);
         brightness = (SeekBar)findViewById(R.id.seekBar);
-        lumn = (TextView)findViewById(R.id.lumn);
+
 
         new ConnectBT().execute(); //Call the class to connect
 
@@ -80,6 +81,17 @@ public class ledControl extends ActionBarActivity {
                 Disconnect(); //close connection
             }
         });
+
+        btnTemp.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                msg("Temperature detection button clicked");
+                readTemperature(); //close connection
+            }
+        });
+
 
         brightness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -131,7 +143,7 @@ public class ledControl extends ActionBarActivity {
         {
             try
             {
-                btSocket.getOutputStream().write("TF".toString().getBytes());
+                btSocket.getOutputStream().write("0".toString().getBytes());
             }
             catch (IOException e)
             {
@@ -139,6 +151,7 @@ public class ledControl extends ActionBarActivity {
             }
         }
     }
+
 
     private void turnOnLed()
     {
@@ -146,7 +159,7 @@ public class ledControl extends ActionBarActivity {
         {
             try
             {
-                btSocket.getOutputStream().write("TO".toString().getBytes());
+                btSocket.getOutputStream().write("1".toString().getBytes());
             }
             catch (IOException e)
             {
@@ -155,6 +168,28 @@ public class ledControl extends ActionBarActivity {
         }
     }
 
+    private void readTemperature() {
+        int len;
+        byte[] buffer = new byte[400];
+        if (btSocket!=null)
+        {
+            msg("btsocket is open");
+            try
+            {
+                btSocket.getOutputStream().write("4".toString().getBytes());
+                msg("bssocket send complete");
+                len = btSocket.getInputStream().available();
+                msg("msg received leng" +  Integer.toString(len));
+                btSocket.getInputStream().read(buffer,0,len);
+                msg("read from sensor: " + buffer.toString());
+
+            }
+            catch (IOException e)
+            {
+                msg("Error");
+            }
+        }
+    }
     // fast way to call Toast
     private void msg(String s)
     {
