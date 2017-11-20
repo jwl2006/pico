@@ -40,6 +40,7 @@ public class ledControl extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         Intent newint = getIntent();
+        System.out.println("Inside the LED CONTROL method");
         address = newint.getStringExtra(DeviceList.EXTRA_ADDRESS); //receive the address of the bluetooth device
 
         //view of the ledControl
@@ -48,9 +49,7 @@ public class ledControl extends ActionBarActivity {
         //call the widgtes
         btnOn = (Button)findViewById(R.id.button2);
         btnOff = (Button)findViewById(R.id.button3);
-        btnDis = (Button)findViewById(R.id.button4);
-        btnTemp = (Button)findViewById(R.id.button5);
-        brightness = (SeekBar)findViewById(R.id.seekBar);
+
 
 
         new ConnectBT().execute(); //Call the class to connect

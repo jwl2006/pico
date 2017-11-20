@@ -20,7 +20,7 @@
         </activity>
         <activity
             android:name=".ledControl"
-            android:label="LED Control" >
+            android:label="Pico Device Control" >
         </activity>
         <activity
             android:name=".Splash"

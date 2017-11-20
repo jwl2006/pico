@@ -3,6 +3,7 @@ package com.led.led;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -95,10 +96,12 @@ public class DeviceList extends ActionBarActivity
         public void onItemClick (AdapterView<?> av, View v, int arg2, long arg3)
         {
             // Get the device MAC address, the last 17 chars in the View
+            Log.d("myTag", "Button is clicked");
             String info = ((TextView) v).getText().toString();
             String address = info.substring(info.length() - 17);
 
             // Make an intent to start next activity.
+            Log.d("myTag", "Here will start the intent");
             Intent i = new Intent(DeviceList.this, ledControl.class);
 
             //Change the activity.
