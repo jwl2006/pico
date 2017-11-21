@@ -5,4 +5,5 @@
     <color name="button_green">#1EBEa5</color>
     <color name="strong_red">#992f2f</color>
     <color name="weak_red">#fd5c63</color>
+    <color name="black">#000000</color>
 </resources>

@@ -50,7 +50,7 @@ public class ledControl extends ActionBarActivity {
         btnOn = (Button)findViewById(R.id.button2);
         btnOff = (Button)findViewById(R.id.button3);
 
-
+        btnDis = (Button)findViewById(R.id.button4) ;
 
         new ConnectBT().execute(); //Call the class to connect
 
@@ -81,44 +81,44 @@ public class ledControl extends ActionBarActivity {
             }
         });
 
-        btnTemp.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                msg("Temperature detection button clicked");
-                readTemperature(); //close connection
-            }
-        });
+//        btnTemp.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View v)
+//            {
+//                msg("Temperature detection button clicked");
+//                readTemperature(); //close connection
+//            }
+//        });
 
 
-        brightness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser==true)
-                {
-                    lumn.setText(String.valueOf(progress));
-                    try
-                    {
-                        btSocket.getOutputStream().write(String.valueOf(progress).getBytes());
-                    }
-                    catch (IOException e)
-                    {
-
-                    }
-                }
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
+//        brightness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+//            @Override
+//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+//                if (fromUser==true)
+//                {
+//                    lumn.setText(String.valueOf(progress));
+//                    try
+//                    {
+//                        btSocket.getOutputStream().write(String.valueOf(progress).getBytes());
+//                    }
+//                    catch (IOException e)
+//                    {
+//
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onStartTrackingTouch(SeekBar seekBar) {
+//
+//            }
+//
+//            @Override
+//            public void onStopTrackingTouch(SeekBar seekBar) {
+//
+//            }
+//        });
     }
 
     private void Disconnect()

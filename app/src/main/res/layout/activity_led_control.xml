@@ -33,11 +33,25 @@
         android:layout_height="wrap_content"
         android:text="STOP Pico"
         android:id="@+id/button3"
-        android:layout_marginTop="174dp"
         android:background="@drawable/red_button"
         style="@style/button_text"
+        android:layout_marginTop="70dp"
         android:layout_below="@+id/button2"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Disconnect"
+        android:layout_marginBottom="31dp"
+        android:background="@drawable/disconnect_button"
+
+        style="@style/button_text"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_alignStart="@+id/button3" />
+
 
 </RelativeLayout>

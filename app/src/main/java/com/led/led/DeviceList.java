@@ -33,6 +33,7 @@ public class DeviceList extends ActionBarActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_list);
 
@@ -96,6 +97,7 @@ public class DeviceList extends ActionBarActivity
         public void onItemClick (AdapterView<?> av, View v, int arg2, long arg3)
         {
             // Get the device MAC address, the last 17 chars in the View
+            System.out.println("Button is clicked!!!");
             Log.d("myTag", "Button is clicked");
             String info = ((TextView) v).getText().toString();
             String address = info.substring(info.length() - 17);
